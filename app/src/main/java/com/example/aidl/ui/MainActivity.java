@@ -89,6 +89,11 @@ public class MainActivity extends AppCompatActivity {
             Log.d(TAG, "receiveEvent: " +event);
 
         }
+
+        @Override
+        public void receiveStringEvent(String event) throws RemoteException {
+            Log.d(TAG, "receiveStringEvent: " +event);
+        }
     };
 
     ServiceConnection serviceConnection = new ServiceConnection() {

@@ -31,7 +31,8 @@ public class SecondActivity extends AppCompatActivity {
 
     public void sendEvent(View view) throws RemoteException {
         if (messageSender != null) {
-            messageSender.sendEvent(222);
+//            messageSender.sendEvent(222);
+            messageSender.sendStringEvent("SecondActivity's Event");
         }
     }
     /**
@@ -93,6 +94,11 @@ public class SecondActivity extends AppCompatActivity {
         public void receiveEvent(int event) throws RemoteException {
             Log.d(TAG, "receiveEvent: " +event);
 
+        }
+
+        @Override
+        public void receiveStringEvent(String event) throws RemoteException {
+            Log.d(TAG, "receiveStringEvent: " +event);
         }
     };
 
