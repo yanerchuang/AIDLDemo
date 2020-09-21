@@ -4,20 +4,14 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.aidl.ui.MainActivity">
+    tools:context="com.example.aidl.ui.SecondActivity">
 
-    <Button android:id="@+id/btn1"
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:onClick="sendEvent"
         android:text="发送进程间event" />
-
-    <Button android:id="@+id/btn2" android:layout_below="@id/btn1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="jump" android:layout_centerHorizontal="true"
-        android:text="跳转secondActivity" />
 
 
 </RelativeLayout>

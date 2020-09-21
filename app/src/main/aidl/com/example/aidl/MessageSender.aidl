@@ -5,6 +5,7 @@ import com.example.aidl.MessageReceiver;
 
 interface MessageSender {
     void sendMessage(in MessageModel messageModel);
+    void sendEvent(int event);
 
     void registerReceiveListener(MessageReceiver messageReceiver);
 

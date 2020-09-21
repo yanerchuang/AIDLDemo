@@ -33,6 +33,27 @@ public class MessageService extends Service {
         }
 
         @Override
+        public void sendEvent(int event) throws RemoteException {
+            /**
+             * RemoteCallbackList的遍历方式
+             * beginBroadcast和finishBroadcast一定要配对使用
+             */
+            final int listenerCount = listenerList.beginBroadcast();
+            Log.d(TAG, "listenerCount == " + listenerCount);
+            for (int i = 0; i < listenerCount; i++) {
+                MessageReceiver messageReceiver = listenerList.getBroadcastItem(i);
+                if (messageReceiver != null) {
+                    try {
+                        messageReceiver.receiveEvent(event);
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            listenerList.finishBroadcast();
+        }
+
+        @Override
         public void registerReceiveListener(MessageReceiver messageReceiver) throws RemoteException {
             listenerList.register(messageReceiver);
         }

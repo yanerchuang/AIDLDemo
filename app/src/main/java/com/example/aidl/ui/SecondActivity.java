@@ -17,18 +17,23 @@ import com.example.aidl.R;
 import com.example.aidl.data.MessageModel;
 import com.example.aidl.service.MessageService;
 
-public class MainActivity extends AppCompatActivity {
+public class SecondActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "SecondActivity";
     private MessageSender messageSender;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_second);
         setupService();
     }
 
+    public void sendEvent(View view) throws RemoteException {
+        if (messageSender != null) {
+            messageSender.sendEvent(222);
+        }
+    }
     /**
      * 1.unregisterListener
      * 2.unbindService
@@ -121,13 +126,4 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    public void sendEvent(View view) throws RemoteException {
-        if (messageSender != null) {
-            messageSender.sendEvent(111);
-        }
-    }
-
-    public void jump(View view) {
-        startActivity(new Intent(this,SecondActivity.class));
-    }
 }
